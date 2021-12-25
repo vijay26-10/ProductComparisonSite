@@ -31,7 +31,7 @@ def get_html_content(request):
     session.headers['User-Agent'] = USER_AGENT
     session.headers['Accept-Language'] = LANGUAGE
     session.headers['Content-Language'] = LANGUAGE
-    api_key = '646aeb65976797f92aedfc6bba6ef204'
+    api_key = 'Enter Scraper Api key'
     url = f'https://www.amazon.in/s?k={product}&ref=nb_sb_noss_1'
     print(url)
     params = {'api_key': api_key, 'url': url}
@@ -52,7 +52,7 @@ def get_html_contentflp(request):
     session.headers['User-Agent'] = USER_AGENT
     session.headers['Accept-Language'] = LANGUAGE
     session.headers['Content-Language'] = LANGUAGE
-    api_key = '646aeb65976797f92aedfc6bba6ef204'
+    api_key = 'Enter Scraper api key'
     url = f'https://www.flipkart.com/search?q={product}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off'
     print("flipakrt url:", url)
     params = {'api_key': api_key, 'url': url}
