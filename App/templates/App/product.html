@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'App/product.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+     <!-- {%for message in messages %}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <h3>Hello {{fname}} </h3>
+        <h4>you are successfully logged in</h4>
+        <button type="submit"><a href="signout">SignOut</a></button>
+    {% else %}
+        <button type="submit"><a href="signup">SignUp</a></button>
+        <button type="submit"><a href="signin">SignIn</a></button>     
+    {% endif %} -->
+
+    <!-- <div class="form-container">
+    <div class="box">
+            <form action="{% url 'fetchProducts' %}" method="get">
+                {% csrf_token %}
+                   <input type="text" name="search" id="">
+                   <input type="submit" value="submit">
+                  
+               </form>
+        </div> 
+        <button class="delbtn"><a href="{% url 'delete' %}">Delete</a></button> 
+    </div> -->
+
+    {% if user.is_authenticated %}
+     <h2>{{user.email}}</h2>
+    {%endif%}
+    <button class="previous-btn" type="submit"><a href="fetchProducts">All Products</a></button>
+    <button class="Search-btn" type="submit"><a href='/app'>Search Products</a></button>
+
+    <div class="container">
+
+        {% if records_list %}
+
+        {% for record_list in records_list %}
+            <div class="slider">
+                <h3>Amazon</h3>
+                <div class="image">
+                    <img src={{record_list.amzImageLink}} >
+
+                    <div class="Button">
+                        <a class="btn" href={{record_list.amzProductLink}}>Buy</a>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <div class="product-name">
+                        <p>{{record_list.amzProductName}}</p>
+                    </div>
+                </div>
+                <div class="price-block">
+                    <p class="price">Price: &#8377;{{record_list.amzProductPrice}}</p>
+                </div>
+            </div>
+        {%endfor%}
+        {%else%}
+            <h1 class="msg">Products Not Available </h1>
+            <!-- <iframe src="https://giphy.com/embed/CoND5j6Bn1QZUgm1xX" width="480" height="480" padding-top="500px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
+        </div>
+        </div>
+            {% if amzproduct %}
+                {% for record_list in amzproduct %}
+                <div class="slider">
+                    <h3>Amazon</h3>
+                    <div class="image">
+                        <img src={{record_list.amzImageLink}} >
+
+                        <div class="Button">
+                            <a class="btn" href={{record_list.amzProductLink}}>Buy</a>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-name">
+                            <p>{{record_list.amzProductName}}</p>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <p class="price">Price: &#8377;{{record_list.amzProductPrice}}</p>
+                    </div>
+                </div>
+            
+            {%endfor%}
+            {%endif%}
+        {% endif %}
+
+        
+
+            {% if flprecords_list %}
+            {%for flprecord_list in flprecords_list%}
+            <div class="slider">
+                <h3>Flipkart</h3>
+                <div class="image">
+                    <img src={{flprecord_list.flpProductImg}} >
+
+                    <div class="Button">
+                        <a class="btn" href={{flprecord_list.flpProducLink}}>Buy</a>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <div class="product-name">
+                        <p>{{flprecord_list.flpProductName}}</p>
+                    </div>
+                </div>
+                <div class="price-block">
+                    <p class="price">Price: &#8377;{{flprecord_list.flpProductPrice}}</p>
+                </div>
+            </div>
+        {%endfor%}
+        {%else%}
+            
+            {% if flpproduct %}
+            <h2>Flipkart Poroducts</h2>
+            {%for flprecord_list in flpproduct%}
+            <div class="slider">
+                <h3>Flipkart</h3>
+                <div class="image">
+                    <img src={{flprecord_list.flpProductImg}} >
+
+                    <div class="Button">
+                        <a class="btn" href={{flprecord_list.flpProducLink}}>Buy</a>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <div class="product-name">
+                        <p>{{flprecord_list.flpProductName}}</p>
+                    </div>
+                </div>
+                <div class="price-block">
+                    <p class="price">Price: &#8377;{{flprecord_list.flpProductPrice}}</p>
+                </div>
+            </div>
+            {%endfor%}
+
+            {% endif %}
+        {% endif %}
+    </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+    </div>
+
+
+    <script type="text/javascript">
+        const arrows = document.querySelectorAll(".arrow");
+        const container= document.querySelectorAll(".container");
+
+        arrows.forEach((arrow, i) => {
+            const ItemNo = container[i].querySelectorAll("img").length;
+            console.log(ItemNo);
+            let clickitem = 0;
+            arrow.addEventListener("click", () => {
+                clickitem++;
+                if(ItemNo - (5 + clickitem) >= 0){
+                    container[i].style.transform = `translateX(${
+                        container[i].computedStyleMap().get("transform")[0].x.value
+                        - 455}px)`;
+                }else{
+                    container[i].style.transform = "translateX(0)";
+                    clickitem = 0;
+                }
+            });
+        });
+        function togglepopup(){
+            document.getElementById("popup-1").classList.toggle("active");
+            window.close()
+        }
+    </script> 
+</body>
+</html>

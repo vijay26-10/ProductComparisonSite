@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    {%load static%}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'App/signup.css' %}"/>
+</head>
+<body>
+<div class="container">
+    <div class="form1">
+        <div class="heading">
+            <h1>Registration form</h1>
+        </div>
+        <form action="signup" method="post">
+            {% csrf_token %}
+            <div class="wrap">
+                <div class="f1">
+                    <label for="">First name</label>
+                    <input type="text" name="fname" id="fname" Required >
+                    <span class="focus-input"></span>
+                </div>
+                <div class="f2">
+                    <label for="">Last name</label>
+                    <input type="text" name="lname" id="lname" Required >
+                    <span class="focus-input"></span>
+                </div>
+             </div>
+             <div class="wrap2">
+                <label for="">Username</label>
+                <input type="text" name="username" id="username" Required >
+                <span class="focus-input2"></span>
+             </div>
+
+             <div class="wrap2">
+                <label for="">Email address</label>
+                <input type="email" name="email" id="email" Required >
+                <span class="focus-input2"></span>
+             </div>
+
+             <div class="wrap2">
+                <label for="">Password</label>
+                <input type="password" name="pass1" id="pass1"  Required >
+                <span class="focus-input2"></span>
+             </div>
+             <div class="wrap2">
+                <label for="">confirm your Password</label>
+                <input type="password" name="pass2" id="pass2"  Required >
+                <span class="focus-input2"></span>
+             </div>
+             <button type="submit" class="btn">Sign Up </button>
+        </form>
+
+    </div>
+    <div class="image">
+        {%load static%} 
+        <img src="{% static 'App/media/small.jpg' %}" alt="Not available" srcset="">
+    </div>
+</div>
+    <!-- <h3>SignUP</h3>
+    
+    <form action="signup" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" name="username" id="username" placeholder="Create a Username(only letter and numbers)" Required >
+        <br>
+        <label for="">First name</label>
+        <input type="text" name="fname" id="fname" placeholder="Enter your first name" Required >
+        <br>
+        <label for="">Last name</label>
+        <input type="text" name="lname" id="lname" placeholder="Enter you last name" Required >
+        <br>
+        <label for="">Email address</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email id" Required >
+        <br>
+        <label for="">Password</label>
+        <input type="password" name="pass1" id="pass1" placeholder="Create a Password" Required >
+        <br>
+        <label for="">confirm your Password</label>
+        <input type="password" name="pass2" id="pass2" placeholder="Confirm your password" Required >
+        <br>
+        <button type="submit">Sign Up </button>
+    </form> -->
+</body>
+</html>

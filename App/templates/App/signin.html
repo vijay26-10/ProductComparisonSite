@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'App/login.css' %}"/>
+</head>
+<body>
+<div class="login-div">
+    <form action="signin" method="post">
+        {% csrf_token %}
+        <!-- <form action="signin" method="post">  -->
+            <div class="fields">
+                <div class="username">
+                    <img class="user-icon" src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/>
+                    <!-- <label for="">Username</label> -->
+                    <input type="text" class="user-input" name="username" id="username" placeholder="username" Required >
+                </div>
+                <div class="password">
+                    <img class="pass-icon" src="https://img.icons8.com/material-outlined/30/000000/password.png"/>
+                    <!-- <label for="">Password</label> -->
+                    <input type="password" class="pass-input" name="pass1" id="pass1" placeholder="Password" Required >
+                </div>
+            </div>
+            <button type="submit" class="signin-button">SignIn</button>
+    </form>
+
+</div>
+
+
+
+    <!-- <h3>SignIn</h3>
+    
+    <form action="signin" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" name="username" id="username" Required >
+        <br>
+        <label for="">Password</label>
+        <input type="password" name="pass1" id="pass1" placeholder="Create a Password" Required >
+        <br>
+
+    </form> -->
+</body>
+</html>

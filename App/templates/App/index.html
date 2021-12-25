@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Product</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'App/index.css' %}"/>
+</head>
+<body>
+    <div class="login-div">
+        <div class="title">
+            Product Search
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="fields">
+                <div class="search">
+                    <input type="text" name="product" id="product" placeholder="Type Product Name..." >
+                </div>
+            </div>
+            <input type="submit" class="search-button" value="Search">
+        </form>
+        {%for message in messages %}
+        <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message:</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+        {% endfor %}
+        {% comment %} {% if user.is_authenticated %}
+            <!-- <h3>Hello {{fname}} </h3> -->
+            <h4>you are successfully logged in</h4>
+            <button class="signout-btn" type="submit"><a href="signout">SignOut</a></button>
+        {% else %}
+            <button class="signup-btn" type="submit"><a href="signup">SignUp</a></button>
+            <button class="signin-btn" type="submit"><a href="signin">SignIn</a></button>     
+        {% endif %} {% endcomment %}
+        <button class="previous-btn" type="submit"><a href="fetchProducts">All Products</a></button>
+
+    </div>
+
+    <!-- <div class="box">
+    {% csrf_token %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="product" id="product" placeholder="Type Product Name..." >
+            <input type="submit" value="Search">
+        </form>
+    </div>  -->
+
+
+
+    <!-- {%for message in messages %}
+    <div class="alert alert-{{message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> 
+    {% endfor %} -->
+
+
+    <!-- {% if user.is_authenticated %}
+        <h3>Hello {{fname}} </h3>
+        <h4>you are successfully logged in</h4>
+        <button type="submit"><a href="signout">SignOut</a></button>
+    {% else %}
+        <button type="submit"><a href="signup">SignUp</a></button>
+        <button type="submit"><a href="signin">SignIn</a></button>     
+    {% endif %} -->
+
+</body>
+</html>
